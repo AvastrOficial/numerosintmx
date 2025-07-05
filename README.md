@@ -49,3 +49,5 @@ Un script en JavaScript que:
   - Monitoreo y análisis geográfico de usuarios.
 
 ---
+
+![image](https://github.com/user-attachments/assets/422dbc63-cfcb-4608-aa4e-e4967895fcd5)
