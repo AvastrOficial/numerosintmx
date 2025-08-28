@@ -2,6 +2,7 @@
 
 Este proyecto es un **validador de números telefónicos** que utiliza la API junto con otras fuentes como **OpenStreetMap** y **TimeZoneDB** para obtener información detallada sobre un número ingresado.
 
+WEB : https://bszdoxing.foroactivo.com/h30-login-numer
 ---
 
 ## 🚀 ¿Qué es?
@@ -30,12 +31,6 @@ Un script en JavaScript que:
 - **XMLHttpRequest** para llamadas AJAX.
 - **OpenStreetMap Nominatim API** – para geocodificación.
 - **TimeZoneDB API** – para obtener la zona horaria desde coordenadas geográficas.
-
----
-
-## 📦 Requisitos
-
-- Tener una **API Key** válida de [TimeZoneDB](https://timezonedb.com/api).
 
 ---
 
