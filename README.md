@@ -1,8 +1,9 @@
-# numextracbsz - Validador de Números Telefónicos con Datos Geográficos 
+# numerosintmx - Validador de Números Telefónicos con Datos Geográficos 
 
 Este proyecto es un **validador de números telefónicos** que utiliza la API junto con otras fuentes como **OpenStreetMap** y **TimeZoneDB** para obtener información detallada sobre un número ingresado.
 
-WEB : https://bszdoxing.foroactivo.com/h30-login-numer
+WEB : 
+https://numerosintmx.foroactivo.com
 ---
 
 ## 🚀 ¿Qué es?
