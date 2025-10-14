@@ -80,7 +80,6 @@ npm install
 
 # Crea un archivo .env con tus claves
 cp .env.example .env
-# Agrega tus claves API en el archivo .env
 
 # Inicia el servidor
 npm start
