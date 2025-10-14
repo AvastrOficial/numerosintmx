@@ -46,11 +46,16 @@ Un script en JavaScript que:
 
 ---
 
-## paleta de colores utilizados
+## 🎨 Diseño y Colores
 
-<img width="1464" height="813" alt="Screenshot_3" src="https://github.com/user-attachments/assets/f93d8181-ce8f-4a43-bd55-55fc00e8492c" />
+### Paleta de Colores
+![Paleta de Colores](https://github.com/user-attachments/assets/f93d8181-ce8f-4a43-bd55-55fc00e8492c)
 
-## Diseño de la pagina 
+### Capturas de Pantalla
 
-<img width="1449" height="807" alt="Screenshot_4" src="https://github.com/user-attachments/assets/bbbea7dc-f8ee-455d-b0fd-f573b659a282" />
-<img width="359" height="554" alt="Screenshot_5" src="https://github.com/user-attachments/assets/92a551c5-8c64-4568-af71-ad12244982d8" />
+#### Vista de Escritorio
+![Diseño Desktop](https://github.com/user-attachments/assets/bbbea7dc-f8ee-455d-b0fd-f573b659a282)
+
+#### Vista Móvil
+![Diseño Mobile](https://github.com/user-attachments/assets/92a551c5-8c64-4568-af71-ad12244982d8)
+
