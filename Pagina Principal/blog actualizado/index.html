@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Numerosintmx - Tienda</title>
+  <a href="https://www.foroactivo.com" target="_blank"></a>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<body>
+  <div id="particles-container"></div>
+  
+  <div class="container">
+    <aside>
+      <div class="sidebar-section">
+             <h3>Blog Numerosintmx</h3>
+        <h3>Enlaces Rápidos</h3>
+        <ul class="sidebar-links">
+          <li><a href="#" class="active" data-section="inicio"><i class="fas fa-home"></i> Inicio</a></li>
+          <li><a href="#" data-section="tienda"><i class="fas fa-store"></i> Tienda</a></li>
+          <li><a href="#" data-section="faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
+          <li><a href="mailto:bszosint@gmail.com"><i class="fas fa-envelope"></i> Contacto</a></li>
+        </ul>
+      </div>
+      
+    
+      <div class="sidebar-section">
+        <h3>Tienda</h3>
+        <p>Podrás comprar saldo por meses y limitdo.</p>
+      </div>
+      
+        <div class="sidebar-section">
+         <h3>Herramienta</h3>
+       <a href="https://numerosintmx.foroactivo.com/h1-osint" class="button"> Ver Herramienta</a>
+      </div>
+      
+      <div class="sidebar-section">
+        <h3>Soporte</h3>
+        <p>¿Necesitas ayuda? Contáctanos a través de nuestro formulario de soporte.</p>
+        <a href="mailto:bszosint@gmail.com" class="button"><i class="fas fa-headset"></i> Soporte</a>
+      </div>
+      
+         <div class="sidebar-section">
+         <h3>Apk</h3>
+           <p>¿Necesitas ayuda? Esta web podras descargar nuestra app.</p>
+       <a href="https://numerosintmx.foroactivo.com/h3-descargar" class="button"><i class="fas fa-download"></i> Descargar Apk</a>
+      </div>
+      
+    </aside>
+    
+    <div class="main-content">
+      <div id="inicio-content" class="content-section">
+        <h1>Numerosintmx</h1>
+        <p>Tu plataforma de análisis de números telefónicos con inteligencia avanzada.</p>
+        <p>Explora nuestras funciones y descubre información valiosa sobre números de teléfono.</p>
+         <h2>Obtén tu Suscripción</h2>
+        <p>Accede a todas las funciones premium de nuestra plataforma.</p>
+
+   <h2>¿Cómo funciona?</h2>
+        <ol>
+            <li>El usuario ingresa un número telefónico (incluyendo el código del país).</li>
+            <li>Se realiza una solicitud a la API para validar y obtener datos del número.</li>
+            <li>Si no se obtiene información como timezone, código de región o código postal:
+                <ul>
+                    <li>Se consulta a OpenStreetMap (Nominatim) para geolocalizar la ciudad basada en el nombre de la ubicación y país.</li>
+                    <li>Luego se consulta a TimeZoneDB con las coordenadas obtenidas para obtener la zona horaria.</li>
+                </ul>
+            </li>
+            <li>Se muestra en pantalla toda la información disponible.</li>
+        </ol>
+<br>
+ <h2>Tecnologías utilizadas</h2>
+        <ul>
+            <li>JavaScript (puro, sin frameworks)</li>
+            <li>XMLHttpRequest para llamadas AJAX</li>
+            <li>OpenStreetMap Nominatim API – para geocodificación</li>
+            <li>TimeZoneDB API – para obtener la zona horaria desde coordenadas geográficas</li>
+        </ul>
+<br>
+ <h2>¿Para qué sirve?</h2>
+        <p>Verificar la validez y detalles técnicos de un número telefónico.</p>
+        <p>Obtener ubicación geográfica detallada y timezone incluso si la API principal no la proporciona.</p>
+        
+        <h3>Es útil para aplicaciones de:</h3>
+        <ul>
+            <li>Registro de usuarios con validación telefónica</li>
+            <li>Sistemas de CRM y soporte técnico</li>
+            <li>Monitoreo y análisis geográfico de usuarios</li>
+        </ul>
+        
+      </div>
+      
+      <div id="tienda-content" class="content-section" style="display: none;">
+        <h2>Tienda</h2>
+        <p class="store-description">Selecciona el plan que mejor se adapte a tus necesidades. Todos los planes incluyen acceso completo a nuestras funciones de análisis.</p>
+        
+        <div class="plans-container">
+          <!-- Plan 1 Mes -->
+          <div class="plan-card">
+            <div class="plan-icon">
+              <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h3 class="plan-name">Plan Básico</h3>
+            <div class="plan-price">$150 <span>/mes</span></div>
+            <ul class="plan-features">
+              <li><i class="fas fa-check"></i> Acceso por 1 mes</li>
+              <li><i class="fas fa-check"></i> 100 consultas mensuales</li>
+              <li><i class="fas fa-check"></i> Soporte por correo</li>
+              <li><i class="fas fa-check"></i> Actualizaciones incluidas</li>
+            </ul>
+            <button class="btn-buy" href="mailto:bszosint@gmail.com?subject=Comprar%20mes%20OSITN%20n%C3%BAmero&body=Hola,%0A%0A[Escribe%20el%20n%C3%BAmero%20del%20mes]%0A[Escribe%20tu%20nombre%20registrado]%0A%0AGracias.">Comprar Ahora</button>
+          </div>
+          
+          <!-- Plan 4 Meses -->
+          <div class="plan-card popular">
+            <div class="plan-icon">
+              <i class="fas fa-star"></i>
+            </div>
+            <h3 class="plan-name">Plan Estándar</h3>
+            <div class="plan-price">$400 <span>/4 meses</span></div>
+            <div class="savings-badge">Ahorras $200</div>
+            <ul class="plan-features">
+              <li><i class="fas fa-check"></i> Acceso por 4 meses</li>
+              <li><i class="fas fa-check"></i> 500 consultas mensuales</li>
+              <li><i class="fas fa-check"></i> Soporte prioritario</li>
+              <li><i class="fas fa-check"></i> Actualizaciones incluidas</li>
+              <li><i class="fas fa-check"></i> Estadísticas avanzadas</li>
+            </ul>
+            <button class="btn-buy" href="mailto:bszosint@gmail.com?subject=Comprar%20mes%20OSITN%20n%C3%BAmero&body=Hola,%0A%0A[Escribe%20el%20n%C3%BAmero%20del%20mes]%0A[Escribe%20tu%20nombre%20registrado]%0A%0AGracias.">Comprar Ahora</button>
+          </div>
+          
+          <!-- Plan 1 Año -->
+          <div class="plan-card">
+            <div class="plan-icon">
+              <i class="fas fa-crown"></i>
+            </div>
+            <h3 class="plan-name">Plan Premium</h3>
+            <div class="plan-price">$900 <span>/año</span></div>
+            <div class="savings-badge">Ahorras $900</div>
+            <ul class="plan-features">
+              <li><i class="fas fa-check"></i> Acceso por 1 año completo</li>
+              <li><i class="fas fa-check"></i> Consultas ilimitadas</li>
+              <li><i class="fas fa-check"></i> Soporte premium 24/7</li>
+              <li><i class="fas fa-check"></i> Actualizaciones prioritarias</li>
+              <li><i class="fas fa-check"></i> Reportes personalizados</li>
+              <li><i class="fas fa-check"></i> Acceso a funciones beta</li>
+            </ul>
+            <button class="btn-buy" href="mailto:bszosint@gmail.com?subject=Comprar%20mes%20OSITN%20n%C3%BAmero&body=Hola,%0A%0A[Escribe%20el%20n%C3%BAmero%20del%20mes]%0A[Escribe%20tu%20nombre%20registrado]%0A%0AGracias.">>Comprar Ahora</button>
+          </div>
+        </div>
+        
+        <div class="store-description" style="margin-top: 40px;">
+          <p><i class="fas fa-shield-alt"></i> Todos los pagos son seguros y están protegidos.</p>
+          <p><i class="fas fa-sync-alt"></i> Puedes cancelar tu suscripción en cualquier momento.</p>
+        </div>
+      </div>
+      
+      <div id="faq-content" class="content-section" style="display: none;">
+        <h2>Preguntas Frecuentes</h2>
+         <h2> ¿Cómo se usa?</h2>
+          <ul>
+            <li>Ingresa un número telefónico en el campo indicado.</li>
+            <li>Haz clic en "Filtrar Datos".</li>
+            <li>Observa el resultado en pantalla.</li>
+            <li>Usa el botón "Copiar" para guardar la información.</li>
+          </ul>
+          <p>El proceso es simple e intuitivo, diseñado para usuarios de todos los niveles de experiencia técnica.</p>
+        <br>
+        <h2> Política de Privacidad</h2>
+          <p>Esta herramienta almacena temporalmente datos como nombre de usuario e IP para fines de validación. No compartimos esta información con terceros. El usuario puede cerrar sesión en cualquier momento para eliminar sus datos de sesión.</p>
+          <p>Nos tomamos muy en serio la seguridad de tus datos. Todos los procesos de validación se realizan en servidores seguros con encriptación de extremo a extremo.</p>
+        <br>
+        <h2> ¿Qué es esta herramienta?</h2>
+          <p>NumExtracBsz es una herramienta web diseñada para validar y filtrar datos asociados a números telefónicos. Permite analizar información útil de forma rápida y segura.</p>
+          <p>Con nuestra plataforma, puedes obtener información relevante sobre números telefónicos de manera eficiente, manteniendo siempre la seguridad y privacidad de los datos.</p>
+        
+      </div>
+    </div>
+  </div>
+  
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Numerosintmx.</p>
+   
+    </div>
+  </footer>
+
+  </body>
+</html>
