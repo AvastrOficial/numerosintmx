@@ -1,0 +1,483 @@
+        :root {
+            --cafe-oscuro: #3E2723;
+            --cafe-medio: #5D4037;
+            --caqui-claro: #D7CCC8;
+            --hueso: #EFEBE9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--hueso);
+            color: var(--cafe-oscuro);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Fondo animado con partículas */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            background-color: var(--cafe-medio);
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+            50% {
+                transform: translateY(-20px) translateX(10px);
+            }
+            100% {
+                transform: translateY(0) translateX(0);
+            }
+        }
+        
+        /* Líneas de conexión animadas */
+        .connection-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .line {
+            position: absolute;
+            background: linear-gradient(to right, transparent, var(--cafe-medio), transparent);
+            height: 1px;
+            animation: lineMove 10s infinite linear;
+        }
+        
+        @keyframes lineMove {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--cafe-oscuro), var(--cafe-medio));
+            padding: 25px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: pulse 8s infinite linear;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            border-radius: 15px;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            animation: iconFloat 3s infinite ease-in-out;
+        }
+        
+        @keyframes iconFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .options {
+            padding: 25px 20px;
+        }
+        
+        .option {
+            background-color: var(--caqui-claro);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+        
+        .option:hover::before {
+            left: 100%;
+        }
+        
+        .option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .option h2 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--cafe-oscuro);
+        }
+        
+        .option p {
+            font-size: 0.9rem;
+            color: var(--cafe-medio);
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: var(--cafe-medio);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        
+        .btn:hover::after {
+            animation: ripple 1s ease-out;
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
+        }
+        
+        .btn:hover {
+            background-color: var(--cafe-oscuro);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn i {
+            font-size: 1.1rem;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 0.8rem;
+            color: var(--cafe-medio);
+            position: relative;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10%;
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--cafe-medio), transparent);
+        }
+        
+        /* Efectos de conexión entre botones */
+        .connection {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(to right, var(--cafe-medio), var(--cafe-oscuro));
+            z-index: 0;
+            opacity: 0.5;
+            animation: connectionPulse 3s infinite;
+        }
+        
+        @keyframes connectionPulse {
+            0%, 100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+        
+        /* Estilos para escritorio */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 800px;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .options {
+                display: flex;
+                gap: 20px;
+                position: relative;
+            }
+            
+            .option {
+                flex: 1;
+                margin-bottom: 0;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .connection {
+                top: 50%;
+                left: 25%;
+                width: 50%;
+                transform: translateY(-50%);
+            }
+        }
+        
+        /* Animaciones específicas para móvil */
+        @media (max-width: 767px) {
+            .container {
+                animation: mobileSlideIn 1s ease-out;
+            }
+            
+            @keyframes mobileSlideIn {
+                from {
+                    opacity: 0;
+                    transform: translateX(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+            
+            .option {
+                animation: mobileCardFloat 4s infinite ease-in-out;
+            }
+            
+            @keyframes mobileCardFloat {
+                0%, 100% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(-3px);
+                }
+            }
+            
+            .btn {
+                animation: mobileButtonPulse 2s infinite;
+            }
+            
+            @keyframes mobileButtonPulse {
+                0%, 100% {
+                    box-shadow: 0 0 0 0 rgba(93, 64, 55, 0.4);
+                }
+                70% {
+                    box-shadow: 0 0 0 10px rgba(93, 64, 55, 0);
+                }
+            }
+        }
+        
+        /* Animación de carga tecnológica */
+        .tech-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--hueso);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+        
+        .tech-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loader-content {
+            text-align: center;
+        }
+        
+        .loader-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            border: 3px solid var(--caqui-claro);
+            border-top: 3px solid var(--cafe-oscuro);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loader-content p {
+            color: var(--cafe-medio);
+            font-weight: 500;
+        }
+        
+        /* Puntos animados para móvil */
+        .mobile-dots {
+            display: none;
+        }
+        
+        @media (max-width: 767px) {
+            .mobile-dots {
+                display: block;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+                overflow: hidden;
+            }
+            
+            .mobile-dot {
+                position: absolute;
+                background-color: var(--cafe-medio);
+                border-radius: 50%;
+                opacity: 0.1;
+                animation: mobileDotMove 8s infinite linear;
+            }
+            
+            @keyframes mobileDotMove {
+                0% {
+                    transform: translateY(0) translateX(0);
+                }
+                25% {
+                    transform: translateY(-15px) translateX(10px);
+                }
+                50% {
+                    transform: translateY(0) translateX(20px);
+                }
+                75% {
+                    transform: translateY(15px) translateX(10px);
+                }
+                100% {
+                    transform: translateY(0) translateX(0);
+                }
+            }
+        }
