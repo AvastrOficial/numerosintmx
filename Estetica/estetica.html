@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Validador Telefónico - Tonos Café</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f8f5ef;
+      color: #4b2e05;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .card {
+      background: #fffaf3;
+      border: 2px solid #d4b483;
+      border-radius: 20px;
+      padding: 2.5rem;
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 0 15px #d4b48344;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .card h1 {
+      color: #8b5a2b;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.9rem;
+      border: 1.5px solid #c9a76a;
+      border-radius: 10px;
+      background: #fdfaf4;
+      color: #4b2e05;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: #8b5a2b;
+      box-shadow: 0 0 6px #d4b48388;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.9rem;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #8b5a2b, #d4b483);
+      color: #fffaf3;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 10px #d4b483aa;
+    }
+
+    #result {
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+      color: #4b2e05;
+      text-align: left;
+      background: #fffefb;
+      border-radius: 10px;
+      padding: 1rem;
+      border: 1px solid #e6d7b8;
+      display: none;
+    }
+
+    #loading {
+      color: #8b5a2b;
+      font-size: 1rem;
+      margin-top: 1rem;
+      display: none;
+      animation: blink 1.5s infinite;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      text-align: center;
+      color: #8b5a2b;
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>📞 Validador Telefónico</h1>
+    <input type="text" id="phone" placeholder="Ejemplo: +5215512345678">
+    <button onclick="validateNumber()">Validar Número</button>
+    <div id="loading">Analizando número...</div>
+    <div id="result"></div>
+  </div>
+
+  <footer>© 2025 numextracbsz</footer>
+
+  <script>
+    async function validateNumber() {
+      const phoneInput = document.getElementById('phone');
+      const resultDiv = document.getElementById('result');
+      const loadingDiv = document.getElementById('loading');
+
+      const number = phoneInput.value.trim();
+      if (!number) {
+        alert('Por favor, ingresa un número telefónico válido.');
+        return;
+      }
+
+      resultDiv.style.display = 'none';
+      loadingDiv.style.display = 'block';
+      resultDiv.innerHTML = '';
+
+      try {
+        const apiKey = "C762832226674914B8D6AF350B519392"; // 🔒 Reemplaza con tu API key de Veriphone
+        const response = await fetch(
+          `https://api.veriphone.io/v2/verify?phone=${encodeURIComponent(number)}&key=${apiKey}`
+        );
+        const data = await response.json();
+
+        loadingDiv.style.display = 'none';
+        resultDiv.style.display = 'block';
+
+        if (data.phone_valid) {
+          resultDiv.innerHTML = `
+            <strong>✅ Número válido</strong><br><br>
+            <b>Internacional:</b> ${data.international_number || 'N/A'}<br>
+            <b>País:</b> ${data.country || 'N/A'}<br>
+            <b>Operador:</b> ${data.carrier || 'N/A'}<br>
+            <b>Tipo:</b> ${data.phone_type || 'N/A'}<br>
+            <b>Prefijo:</b> ${data.country_prefix || 'N/A'}
+          `;
+        } else {
+          resultDiv.innerHTML = `<strong>❌ Número no válido o desconocido.</strong>`;
+        }
+      } catch (error) {
+        loadingDiv.style.display = 'none';
+        resultDiv.style.display = 'block';
+        resultDiv.innerHTML = `<strong>⚠️ Error al conectar con el servicio.</strong>`;
+        console.error(error);
+      }
+    }
+  </script>
+</body>
+</html>
