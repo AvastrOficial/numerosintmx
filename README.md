@@ -45,6 +45,7 @@ Un script en JavaScript que:
   - Monitoreo y análisis geográfico de usuarios.
 
 ---
+## Colaboradores 
 <table> <tr> <td align="center"> <a href="https://github.com/AvastrOficial/numerosintmx/graphs/contributors"> <img src="https://contrib.rocks/image?repo=AvastrOficial/numerosintmx" /> </a> </td> </tr> </table>
 
 ## 🎨 Diseño y Colores
