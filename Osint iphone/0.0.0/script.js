@@ -1773,7 +1773,7 @@ function mostrarMapaAlternativo(lat, lng, ubicacion) {
         // Usar imagen estática de OpenStreetMap como fallback
         const zoom = 12;
         const size = '600x300';
-        const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=${zoom}&size=${size}&markers=color:red%7C${lat},${lng}&key=AIzaSyDqjFh7hQ3GXj2Q8Q8Q8Q8Q8Q8Q8Q8Q8Q8`;
+        const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=${zoom}&size=${size}&markers=color:red%7C${lat},${lng}&key=TOKEN GOOLGE MAPS`;
         
         // Alternativa con OpenStreetMap static (gratuito)
         const osmStaticUrl = `https://static-maps.yandex.ru/1.x/?ll=${lng},${lat}&z=${zoom}&size=600,300&l=map&pt=${lng},${lat},pm2rdl`;
