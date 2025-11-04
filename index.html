@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Numerosintmx - Tienda</title>
+  <a href="https://www.foroactivo.com" target="_blank"></a>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+     :root {
+      --cafe-oscuro: #3E2723;
+      --cafe-medio: #795548;
+      --caqui-claro: #D7CCC8;
+      --hueso: #F5F5DC;
+      --blanco: #FFFFFF;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background: linear-gradient(135deg, var(--cafe-oscuro), var(--cafe-medio));
+      color: var(--hueso);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .container {
+      display: flex;
+      flex: 1;
+    }
+    
+    aside {
+      width: 280px;
+      background: rgba(62, 39, 35, 0.9);
+      padding: 20px;
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      overflow-y: auto;
+      border-right: 2px solid var(--cafe-medio);
+    }
+    
+    .sidebar-section {
+      margin-bottom: 30px;
+    }
+    
+    .sidebar-section h3 {
+      color: var(--caqui-claro);
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+      border-bottom: 1px solid var(--cafe-medio);
+      padding-bottom: 8px;
+    }
+    
+    .sidebar-links {
+      list-style: none;
+    }
+    
+    .sidebar-links li {
+      margin-bottom: 10px;
+    }
+    
+    .sidebar-links a {
+      display: flex;
+      align-items: center;
+      color: var(--hueso);
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+    
+    .sidebar-links a:hover, .sidebar-links a.active {
+      background: rgba(121, 85, 72, 0.5);
+      color: var(--caqui-claro);
+    }
+    
+    .sidebar-links i {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+    
+    .button {
+      display: inline-block;
+      background: var(--cafe-medio);
+      color: var(--hueso);
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+      border: 1px solid var(--caqui-claro);
+    }
+    
+    .button:hover {
+      background: var(--caqui-claro);
+      color: var(--cafe-oscuro);
+      transform: translateY(-2px);
+    }
+    
+    .main-content {
+      flex: 1;
+      padding: 30px;
+      overflow-y: auto;
+    }
+    /* Sección principal de contenido */
+.content-section {
+  background: rgba(245, 245, 220, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  margin-bottom: 30px;
+  border: 1px solid rgba(215, 204, 200, 0.2);
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+h1, h2 {
+  color: var(--caqui-claro);
+  margin-bottom: 20px;
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Descripción de la tienda */
+.store-description {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 1.1rem;
+}
+
+/* Contenedor de los planes */
+.plans-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 40px;
+  box-sizing: border-box;
+}
+
+/* Estilo de cada card de plan */
+.plan-card {
+  background: rgba(245, 245, 220, 0.15);
+  border-radius: 15px;
+  padding: 30px 25px;
+  width: 300px;
+  text-align: center;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(215, 204, 200, 0.3);
+  box-sizing: border-box;
+}
+
+.plan-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  background: rgba(245, 245, 220, 0.2);
+}
+
+/* Etiqueta "MÁS POPULAR" */
+.plan-card.popular::before {
+  content: "MÁS POPULAR";
+  position: absolute;
+  top: 15px;
+  right: -30px;
+  background: var(--cafe-medio);
+  color: var(--hueso);
+  padding: 5px 30px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transform: rotate(45deg);
+  border: 1px solid var(--caqui-claro);
+}
+
+/* Icono del plan */
+.plan-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: var(--caqui-claro);
+}
+
+/* Nombre del plan */
+.plan-name {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: var(--hueso);
+}
+
+/* Precio del plan */
+.plan-price {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: var(--caqui-claro);
+}
+
+.plan-price span {
+  font-size: 1rem;
+  color: var(--hueso);
+}
+
+/* Lista de características */
+.plan-features {
+  list-style: none;
+  margin-bottom: 30px;
+  text-align: left;
+  padding: 0;
+}
+
+.plan-features li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(215, 204, 200, 0.2);
+  color: var(--hueso);
+}
+
+.plan-features li:last-child {
+  border-bottom: none;
+}
+
+.plan-features i {
+  color: var(--caqui-claro);
+  margin-right: 10px;
+}
+
+/* Botón de compra */
+.btn-buy {
+  display: inline-block;
+  background: var(--cafe-medio);
+  color: var(--hueso);
+  padding: 12px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 100%;
+  border: 1px solid var(--caqui-claro);
+}
+
+.btn-buy:hover {
+  background: var(--caqui-claro);
+  color: var(--cafe-oscuro);
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(215, 204, 200, 0.4);
+}
+
+/* Responsive para móviles */
+@media (max-width: 480px) {
+  .plans-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 15px;
+  }
+
+  .plan-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .content-section {
+    padding: 20px 15px;
+  }
+}
+
+/* General para evitar scroll horizontal */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+
+    
+    .savings-badge {
+      background: var(--cafe-medio);
+      color: var(--hueso);
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      margin-top: 10px;
+      display: inline-block;
+      border: 1px solid var(--caqui-claro);
+    }
+    
+    footer {
+      background: var(--cafe-oscuro);
+      padding: 20px;
+      text-align: center;
+      margin-top: auto;
+      border-top: 2px solid var(--cafe-medio);
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .social-links a {
+      color: var(--caqui-claro);
+      font-size: 1.5rem;
+      margin-left: 15px;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: var(--hueso);
+      transform: translateY(-3px);
+    }
+    
+    /* Animación de partículas */
+    #particles-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+    
+    .particle {
+      position: absolute;
+      background: rgba(215, 204, 200, 0.5);
+      border-radius: 50%;
+      animation: float 15s infinite linear;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) translateX(100px);
+        opacity: 0;
+      }
+    }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+      .container {
+        flex-direction: column;
+      }
+      
+      aside {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+      
+      .plans-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    } 
+  </style>
+</head>
+<body>
+  <div id="particles-container"></div>
+  
+  <div class="container">
+    <aside>
+      <div class="sidebar-section">
+             <h3>Blog Numerosintmx</h3>
+        <h3>Enlaces Rápidos</h3>
+        <ul class="sidebar-links">
+          <li><a href="#" class="active" data-section="inicio"><i class="fas fa-home"></i> Inicio</a></li>
+          <li><a href="#" data-section="tienda"><i class="fas fa-store"></i> Tienda</a></li>
+          <li><a href="#" data-section="faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
+          <li><a href="mailto:bszosint@gmail.com"><i class="fas fa-envelope"></i> Contacto</a></li>
+        </ul>
+      </div>
+      
+    
+      <div class="sidebar-section">
+        <h3>Tienda</h3>
+        <p>Podrás comprar saldo por meses y limitdo.</p>
+      </div>
+      
+        <div class="sidebar-section">
+         <h3>Herramienta</h3>
+       <a href="https://numerosintmx.foroactivo.com/h1-osint" class="button"> Ver Herramienta</a>
+      </div>
+      
+      <div class="sidebar-section">
+        <h3>Soporte</h3>
+        <p>¿Necesitas ayuda? Contáctanos a través de nuestro formulario de soporte.</p>
+        <a href="mailto:bszosint@gmail.com" class="button"><i class="fas fa-headset"></i> Soporte</a>
+      </div>
+      
+         <div class="sidebar-section">
+         <h3>Apk</h3>
+           <p>¿Necesitas ayuda? Esta web podras descargar nuestra app.</p>
+       <a href="https://numerosintmx.foroactivo.com/h3-descargar" class="button"><i class="fas fa-download"></i> Descargar Apk</a>
+      </div>
+      
+    </aside>
+    
+    <div class="main-content">
+      <div id="inicio-content" class="content-section">
+        <h1>Numerosintmx</h1>
+        <p>Tu plataforma de análisis de números telefónicos con inteligencia avanzada.</p>
+        <p>Explora nuestras funciones y descubre información valiosa sobre números de teléfono.</p>
+         <h2>Obtén tu Suscripción</h2>
+        <p>Accede a todas las funciones premium de nuestra plataforma.</p>
+
+   <h2>¿Cómo funciona?</h2>
+        <ol>
+            <li>El usuario ingresa un número telefónico (incluyendo el código del país).</li>
+            <li>Se realiza una solicitud a la API para validar y obtener datos del número.</li>
+            <li>Si no se obtiene información como timezone, código de región o código postal:
+                <ul>
+                    <li>Se consulta a OpenStreetMap (Nominatim) para geolocalizar la ciudad basada en el nombre de la ubicación y país.</li>
+                    <li>Luego se consulta a TimeZoneDB con las coordenadas obtenidas para obtener la zona horaria.</li>
+                </ul>
+            </li>
+            <li>Se muestra en pantalla toda la información disponible.</li>
+        </ol>
+<br>
+ <h2>Tecnologías utilizadas</h2>
+        <ul>
+            <li>JavaScript (puro, sin frameworks)</li>
+            <li>XMLHttpRequest para llamadas AJAX</li>
+            <li>OpenStreetMap Nominatim API – para geocodificación</li>
+            <li>TimeZoneDB API – para obtener la zona horaria desde coordenadas geográficas</li>
+        </ul>
+<br>
+ <h2>¿Para qué sirve?</h2>
+        <p>Verificar la validez y detalles técnicos de un número telefónico.</p>
+        <p>Obtener ubicación geográfica detallada y timezone incluso si la API principal no la proporciona.</p>
+        
+        <h3>Es útil para aplicaciones de:</h3>
+        <ul>
+            <li>Registro de usuarios con validación telefónica</li>
+            <li>Sistemas de CRM y soporte técnico</li>
+            <li>Monitoreo y análisis geográfico de usuarios</li>
+        </ul>
+        
+      </div>
+      
+      <div id="tienda-content" class="content-section" style="display: none;">
+        <h2>Tienda</h2>
+        <p class="store-description">Selecciona el plan que mejor se adapte a tus necesidades. Todos los planes incluyen acceso completo a nuestras funciones de análisis.</p>
+        
+        <div class="plans-container">
+          <!-- Plan 1 Mes -->
+          <div class="plan-card">
+            <div class="plan-icon">
+              <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h3 class="plan-name">Plan Básico</h3>
+            <div class="plan-price">$150 <span>/mes</span></div>
+            <ul class="plan-features">
+              <li><i class="fas fa-check"></i> Acceso por 1 mes</li>
+              <li><i class="fas fa-check"></i> 100 consultas mensuales</li>
+              <li><i class="fas fa-check"></i> Soporte por correo</li>
+              <li><i class="fas fa-check"></i> Actualizaciones incluidas</li>
+            </ul>
+            <button class="btn-buy" href="mailto:bszosint@gmail.com?subject=Comprar%20mes%20OSITN%20n%C3%BAmero&body=Hola,%0A%0A[Escribe%20el%20n%C3%BAmero%20del%20mes]%0A[Escribe%20tu%20nombre%20registrado]%0A%0AGracias.">Comprar Ahora</button>
+          </div>
+          
+          <!-- Plan 4 Meses -->
+          <div class="plan-card popular">
+            <div class="plan-icon">
+              <i class="fas fa-star"></i>
+            </div>
+            <h3 class="plan-name">Plan Estándar</h3>
+            <div class="plan-price">$400 <span>/4 meses</span></div>
+            <div class="savings-badge">Ahorras $200</div>
+            <ul class="plan-features">
+              <li><i class="fas fa-check"></i> Acceso por 4 meses</li>
+              <li><i class="fas fa-check"></i> 500 consultas mensuales</li>
+              <li><i class="fas fa-check"></i> Soporte prioritario</li>
+              <li><i class="fas fa-check"></i> Actualizaciones incluidas</li>
+              <li><i class="fas fa-check"></i> Estadísticas avanzadas</li>
+            </ul>
+            <button class="btn-buy" href="mailto:bszosint@gmail.com?subject=Comprar%20mes%20OSITN%20n%C3%BAmero&body=Hola,%0A%0A[Escribe%20el%20n%C3%BAmero%20del%20mes]%0A[Escribe%20tu%20nombre%20registrado]%0A%0AGracias.">Comprar Ahora</button>
+          </div>
+          
+          <!-- Plan 1 Año -->
+          <div class="plan-card">
+            <div class="plan-icon">
+              <i class="fas fa-crown"></i>
+            </div>
+            <h3 class="plan-name">Plan Premium</h3>
+            <div class="plan-price">$900 <span>/año</span></div>
+            <div class="savings-badge">Ahorras $900</div>
+            <ul class="plan-features">
+              <li><i class="fas fa-check"></i> Acceso por 1 año completo</li>
+              <li><i class="fas fa-check"></i> Consultas ilimitadas</li>
+              <li><i class="fas fa-check"></i> Soporte premium 24/7</li>
+              <li><i class="fas fa-check"></i> Actualizaciones prioritarias</li>
+              <li><i class="fas fa-check"></i> Reportes personalizados</li>
+              <li><i class="fas fa-check"></i> Acceso a funciones beta</li>
+            </ul>
+            <button class="btn-buy" href="mailto:bszosint@gmail.com?subject=Comprar%20mes%20OSITN%20n%C3%BAmero&body=Hola,%0A%0A[Escribe%20el%20n%C3%BAmero%20del%20mes]%0A[Escribe%20tu%20nombre%20registrado]%0A%0AGracias.">>Comprar Ahora</button>
+          </div>
+        </div>
+        
+        <div class="store-description" style="margin-top: 40px;">
+          <p><i class="fas fa-shield-alt"></i> Todos los pagos son seguros y están protegidos.</p>
+          <p><i class="fas fa-sync-alt"></i> Puedes cancelar tu suscripción en cualquier momento.</p>
+        </div>
+      </div>
+      
+      <div id="faq-content" class="content-section" style="display: none;">
+        <h2>Preguntas Frecuentes</h2>
+         <h2> ¿Cómo se usa?</h2>
+          <ul>
+            <li>Ingresa un número telefónico en el campo indicado.</li>
+            <li>Haz clic en "Filtrar Datos".</li>
+            <li>Observa el resultado en pantalla.</li>
+            <li>Usa el botón "Copiar" para guardar la información.</li>
+          </ul>
+          <p>El proceso es simple e intuitivo, diseñado para usuarios de todos los niveles de experiencia técnica.</p>
+        <br>
+        <h2> Política de Privacidad</h2>
+          <p>Esta herramienta almacena temporalmente datos como nombre de usuario e IP para fines de validación. No compartimos esta información con terceros. El usuario puede cerrar sesión en cualquier momento para eliminar sus datos de sesión.</p>
+          <p>Nos tomamos muy en serio la seguridad de tus datos. Todos los procesos de validación se realizan en servidores seguros con encriptación de extremo a extremo.</p>
+        <br>
+        <h2> ¿Qué es esta herramienta?</h2>
+          <p>NumExtracBsz es una herramienta web diseñada para validar y filtrar datos asociados a números telefónicos. Permite analizar información útil de forma rápida y segura.</p>
+          <p>Con nuestra plataforma, puedes obtener información relevante sobre números telefónicos de manera eficiente, manteniendo siempre la seguridad y privacidad de los datos.</p>
+        
+      </div>
+    </div>
+  </div>
+  
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Numerosintmx.</p>
+   
+    </div>
+  </footer>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Elementos del DOM
+      const inicioLink = document.querySelector('a[data-section="inicio"]');
+      const tiendaLink = document.querySelector('a[data-section="tienda"]');
+      const faqLink = document.querySelector('a[data-section="faq"]');
+      const inicioContent = document.getElementById('inicio-content');
+      const tiendaContent = document.getElementById('tienda-content');
+      const faqContent = document.getElementById('faq-content');
+      const sidebarLinks = document.querySelectorAll('.sidebar-links a');
+      const buyButtons = document.querySelectorAll('.btn-buy');
+      
+      // Función para cambiar entre secciones
+      function showSection(section) {
+        // Ocultar todo el contenido
+        inicioContent.style.display = 'none';
+        tiendaContent.style.display = 'none';
+        faqContent.style.display = 'none';
+        
+        // Mostrar la sección seleccionada
+        if (section === 'inicio') {
+          inicioContent.style.display = 'block';
+        } else if (section === 'tienda') {
+          tiendaContent.style.display = 'block';
+        } else if (section === 'faq') {
+          faqContent.style.display = 'block';
+        }
+        
+        // Actualizar clases activas
+        sidebarLinks.forEach(link => {
+          if (link.getAttribute('data-section') === section) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+      
+      // Event listeners para los enlaces
+      inicioLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        showSection('inicio');
+      });
+      
+      tiendaLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        showSection('tienda');
+      });
+      
+      faqLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        showSection('faq');
+      });
+      
+      // Event listeners para botones de compra
+      buyButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const planName = this.closest('.plan-card').querySelector('.plan-name').textContent;
+          alert(`¡Gracias por tu interés en el ${planName}! Serás redirigido al proceso de pago.`);
+          // Aquí iría la lógica real de redirección al proceso de pago
+        });
+      });
+      
+      // Inicializar con la sección de inicio visible
+      showSection('inicio');
+      
+      // Crear partículas para el fondo
+      const particlesContainer = document.getElementById('particles-container');
+      const particleCount = 30;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Tamaño aleatorio
+        const size = Math.random() * 10 + 5;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        // Posición aleatoria
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        
+        // Retraso de animación aleatorio
+        particle.style.animationDelay = `${Math.random() * 15}s`;
+        
+        particlesContainer.appendChild(particle);
+      }
+    });
+  </script>
+</body>
+</html>
