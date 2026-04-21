@@ -18,6 +18,7 @@ Este repositorio documenta el análisis completo de **NumerosintMX**, una herram
 **Sitio oficial:** [https://numerosintmx.foroactivo.com](https://numerosintmx.foroactivo.com)  
 **Repositorio original:** [github.com/AvastrOficial/numerosintmx](https://github.com/AvastrOficial/numerosintmx)
 
+**EndPont:** [Api Osint Publico](https://cdn.jsdelivr.net/gh/AvastrOficial/estiloweb@main/nube/Funciones/BszOsintIphone/0.0.0.js)
 ---
 
 ## 🎯 Justificación del Análisis
