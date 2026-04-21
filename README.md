@@ -1,4 +1,4 @@
-# 📱 Evaluación Técnica: NumerosintMX
+# Evaluación Técnica: NumerosintMX
 
 ### Validador Telefónico con Geolocalización para México
 
