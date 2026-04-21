@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>BSZ OSINT — Phone Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+
+<!-- Matrix BG -->
+<canvas id="matrix-bg"></canvas>
+
+<!-- Sidebar overlay (mobile) --><div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<!-- App --><div class="app-wrap">
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo-group">
+      <div class="logo-emblem">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+      <div class="logo-text">
+        <div class="logo-title">BSZ<span>.</span>OSINT</div>
+        <div class="logo-sub">Phone Intelligence Platform</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="status-dot">
+        <span class="dot"></span>
+        <span>ONLINE</span>
+      </div>
+      <button class="btn-menu" onclick="toggleSidebar()">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- LAYOUT -->
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">
+          <i class="fa-solid fa-user-shield"></i>
+          Operador
+        </div>
+        <div class="user-card">
+          <div class="user-avatar">
+            <i class="fa-solid fa-user"></i>
+          </div>
+          <div class="user-name" id="nickname">— Invitado —</div>
+          <div class="user-role">BSZ ANALYST</div>
+          <div class="user-stats">
+            <div class="stat-item">
+              <span class="stat-val" id="saldo">0.00</span>
+              <span class="stat-lbl">Créditos</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-val" style="color:var(--gold)">MX</span>
+              <span class="stat-lbl">Región</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">
+          <i class="fa-solid fa-network-wired"></i>
+          Sesión
+        </div>
+        <div class="ip-row">
+          <i class="fa-solid fa-location-dot"></i>
+          <span class="ip-val" id="ip">***.***.*.**</span>
+          <button class="btn-eye" onclick="toggleIp()" title="Mostrar IP">
+            <i class="fa-solid fa-eye" id="eyeIcon"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="sidebar-section" style="padding:0">
+        <div class="sidebar-label" style="padding:16px 18px 12px; margin:0">
+          <i class="fa-solid fa-bars"></i>
+          Módulos
+        </div>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a class="nav-link active">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              Phone Lookup
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">
+              <i class="fa-solid fa-map-location-dot"></i>
+              Geolocation
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">
+              <i class="fa-solid fa-tower-broadcast"></i>
+              Carrier Intel
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">
+              <i class="fa-solid fa-building-shield"></i>
+              Risk Analysis
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">
+              <i class="fa-brands fa-apple"></i>
+              Device OSINT
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">
+              <i class="fa-solid fa-clock-rotate-left"></i>
+              Historial
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-footer">
+        <button class="btn-logout" onclick="cerrarSesion()">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          Cerrar Sesión
+        </button>
+      </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <!-- Top bar -->
+      <div class="top-bar">
+        <div>
+          <div class="page-title">Phone <span>Intelligence</span></div>
+          <div class="breadcrumb">BSZ TEAM / <span>OSINT</span> / PHONE LOOKUP / MX</div>
+        </div>
+        <div class="top-actions">
+          <div class="chip active">
+            <i class="fa-solid fa-circle" style="font-size:.45rem;color:#2ecc71"></i>
+            API LIVE
+          </div>
+          <div class="chip">
+            <i class="fa-solid fa-database"></i>
+            SEPOMEX DB
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="sc-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+          <div class="sc-val">32+</div>
+          <div class="sc-lbl">Operadores MX</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-icon"><i class="fa-solid fa-map-pin"></i></div>
+          <div class="sc-val">800+</div>
+          <div class="sc-lbl">Códigos Postales</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-icon"><i class="fa-solid fa-signal"></i></div>
+          <div class="sc-val">48</div>
+          <div class="sc-lbl">LADAs Detectadas</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-icon"><i class="fa-solid fa-shield-check"></i></div>
+          <div class="sc-val">99%</div>
+          <div class="sc-lbl">Precisión</div>
+        </div>
+      </div>
+
+      <!-- Search Panel -->
+      <div class="search-panel">
+        <div class="panel-header">
+          <div class="panel-icon"><i class="fa-solid fa-crosshairs"></i></div>
+          <div>
+            <div class="panel-title">Target Acquisition</div>
+            <div class="panel-sub">Análisis OSINT de números telefónicos — México</div>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <div class="input-prefix">
+            <i class="fa-solid fa-phone" style="margin-right:8px;font-size:.7rem"></i>
+            +52
+          </div>
+          <input
+            class="phone-input"
+            id="numero"
+            type="tel"
+            placeholder="+525245045146"
+            inputmode="numeric"
+            autocomplete="off"
+            onkeydown="if(event.key==='Enter') validar()"
+          />
+          <button class="btn-search" onclick="validar()">
+            <i class="fa-solid fa-radar"></i>
+            <span>Ejecutar</span>
+          </button>
+        </div>
+
+        <div class="search-hints">
+          <div class="hint"><i class="fa-solid fa-circle-check"></i> Formato: +52XXXXXXXXXX</div>
+          <div class="hint"><i class="fa-solid fa-circle-check"></i> 10 dígitos sin código país</div>
+          <div class="hint"><i class="fa-solid fa-circle-check"></i> Cobertura nacional MX</div>
+        </div>
+
+        <div class="device-strip">
+          <div class="device-tag active">
+            <i class="fa-brands fa-apple"></i>
+            iPhone 15 Pro
+          </div>
+          <div class="device-tag active">
+            <i class="fa-solid fa-signal"></i>
+            5G / LTE
+          </div>
+          <div class="device-tag">
+            <i class="fa-solid fa-location-dot"></i>
+            Geo OSINT
+          </div>
+          <div class="device-tag">
+            <i class="fa-solid fa-tower-cell"></i>
+            Tower Intel
+          </div>
+          <div class="device-tag">
+            <i class="fa-solid fa-fingerprint"></i>
+            Carrier Trace
+          </div>
+        </div>
+      </div>
+
+      <!-- Loading bar -->
+      <div class="loading-bar" id="loadingBar"></div>
+
+      <!-- Result Panel -->
+      <div class="result-panel">
+        <div class="result-header">
+          <div class="result-title">
+            <i class="fa-solid fa-terminal"></i>
+            OUTPUT / RESULT_OBJECT
+          </div>
+          <div class="result-actions">
+            <button class="btn-act" onclick="copiarResultado()">
+              <i class="fa-solid fa-copy"></i>
+              Copiar
+            </button>
+            <button class="btn-act" onclick="limpiarResultado()">
+              <i class="fa-solid fa-trash-can"></i>
+              Limpiar
+            </button>
+          </div>
+        </div>
+        <div class="result-body">
+          <div class="placeholder-msg" id="placeholderMsg">
+            <div class="ph-icon"><i class="fa-solid fa-radar"></i></div>
+            <div class="ph-title">En espera de consulta</div>
+            <div class="ph-sub">Ingresa un número telefónico mexicano para iniciar el análisis OSINT</div>
+          </div>
+          <div id="resultado" style="display:none"></div>
+        </div>
+      </div>
+
+    </main>
+  </div><!-- /layout -->
+</div><!-- /app-wrap -->
+
+<!-- MODAL LOGIN --><div class="modal-overlay" id="registroModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-logo">
+        <div class="modal-emblem">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <div>
+          <div class="modal-brand">BSZ<span>.</span>OSINT</div>
+          <div class="modal-tagline">INTELLIGENCE PLATFORM — MX</div>
+        </div>
+      </div>
+      <div class="modal-title">Acceso al Sistema</div>
+      <div class="modal-sub">Autenticación requerida para continuar</div>
+    </div>
+
+    <div class="modal-body">
+      <div class="modal-tabs">
+        <button class="tab-btn active" id="tabLogin" onclick="switchTab('login')">
+          <i class="fa-solid fa-right-to-bracket"></i> Ingresar
+        </button>
+        <button class="tab-btn" id="tabRegister" onclick="switchTab('register')">
+          <i class="fa-solid fa-user-plus"></i> Registro
+        </button>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="username">
+          <i class="fa-solid fa-user" style="margin-right:5px"></i>
+          Identificador
+        </label>
+        <div class="field-wrap">
+          <i class="fa-solid fa-user field-icon"></i>
+          <input class="field-input" id="username" type="text" placeholder="username" autocomplete="off" />
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="password">
+          <i class="fa-solid fa-lock" style="margin-right:5px"></i>
+          Contraseña
+        </label>
+        <div class="field-wrap">
+          <i class="fa-solid fa-lock field-icon"></i>
+          <input class="field-input" id="password" type="password" placeholder="••••••••" autocomplete="off" onkeydown="if(event.key==='Enter') handleAuth()" />
+        </div>
+      </div>
+
+      <button class="btn-primary" onclick="handleAuth()">
+        <i class="fa-solid fa-terminal" style="margin-right:8px"></i>
+        Autenticar
+      </button>
+
+      <div class="modal-footer-note">
+        <i class="fa-solid fa-lock"></i>
+        Acceso cifrado — BSZ Team Intelligence
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Copy notification --><div class="copy-notif" id="copyNotification">
+  <i class="fa-solid fa-check"></i>
+  Datos copiados al portapapeles
+</div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AvastrOficial/estiloweb@main/nube/estilo/BszOsintIphone/0.0.0.css">
+<script src="https://cdn.jsdelivr.net/gh/AvastrOficial/estiloweb@main/nube/Funciones/BszOsintIphone/0.0.0.js"></script>
+</body>
+</html>
