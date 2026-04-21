@@ -3,334 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Numerosintmx - Tienda</title>
-  <a href="https://www.foroactivo.com" target="_blank"></a>
+  <title>Numerosintmx | Análisis Ético Telefónico</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-     :root {
-      --cafe-oscuro: #3E2723;
-      --cafe-medio: #795548;
-      --caqui-claro: #D7CCC8;
-      --hueso: #F5F5DC;
-      --blanco: #FFFFFF;
+    :root {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --text-primary: #1e293b;
+      --text-secondary: #475569;
+      --accent-primary: #0ea5e9; /* Azul minimalista pero vivo */
+      --accent-secondary: #10b981; /* Verde ético */
+      --border-light: #e2e8f0;
+      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+      --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-    
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    
+
     body {
-      background: linear-gradient(135deg, var(--cafe-oscuro), var(--cafe-medio));
-      color: var(--hueso);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
-    
-    .container {
-      display: flex;
-      flex: 1;
+
+    /* Animaciones Invisibles SCRMS (Scroll Reveal) */
+    .scrms-hidden {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
     }
-    
-    aside {
-      width: 280px;
-      background: rgba(62, 39, 35, 0.9);
-      padding: 20px;
-      height: 100vh;
-      position: sticky;
-      top: 0;
-      overflow-y: auto;
-      border-right: 2px solid var(--cafe-medio);
+
+    .scrms-show {
+      opacity: 1;
+      transform: translateY(0);
     }
-    
-    .sidebar-section {
-      margin-bottom: 30px;
-    }
-    
-    .sidebar-section h3 {
-      color: var(--caqui-claro);
-      margin-bottom: 15px;
-      font-size: 1.2rem;
-      border-bottom: 1px solid var(--cafe-medio);
-      padding-bottom: 8px;
-    }
-    
-    .sidebar-links {
-      list-style: none;
-    }
-    
-    .sidebar-links li {
-      margin-bottom: 10px;
-    }
-    
-    .sidebar-links a {
-      display: flex;
-      align-items: center;
-      color: var(--hueso);
-      text-decoration: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-    }
-    
-    .sidebar-links a:hover, .sidebar-links a.active {
-      background: rgba(121, 85, 72, 0.5);
-      color: var(--caqui-claro);
-    }
-    
-    .sidebar-links i {
-      margin-right: 10px;
-      width: 20px;
-      text-align: center;
-    }
-    
-    .button {
-      display: inline-block;
-      background: var(--cafe-medio);
-      color: var(--hueso);
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s ease;
-      margin-top: 10px;
-      border: 1px solid var(--caqui-claro);
-    }
-    
-    .button:hover {
-      background: var(--caqui-claro);
-      color: var(--cafe-oscuro);
-      transform: translateY(-2px);
-    }
-    
-    .main-content {
-      flex: 1;
-      padding: 30px;
-      overflow-y: auto;
-    }
-    /* Sección principal de contenido */
-.content-section {
-  background: rgba(245, 245, 220, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  padding: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  margin-bottom: 30px;
-  border: 1px solid rgba(215, 204, 200, 0.2);
-  width: 100%;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  box-sizing: border-box;
-}
 
-h1, h2 {
-  color: var(--caqui-claro);
-  margin-bottom: 20px;
-}
-
-p {
-  line-height: 1.6;
-  margin-bottom: 15px;
-}
-
-/* Descripción de la tienda */
-.store-description {
-  text-align: center;
-  margin-bottom: 40px;
-  font-size: 1.1rem;
-}
-
-/* Contenedor de los planes */
-.plans-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
-  margin-top: 40px;
-  box-sizing: border-box;
-}
-
-/* Estilo de cada card de plan */
-.plan-card {
-  background: rgba(245, 245, 220, 0.15);
-  border-radius: 15px;
-  padding: 30px 25px;
-  width: 300px;
-  text-align: center;
-  transition: all 0.4s ease;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(215, 204, 200, 0.3);
-  box-sizing: border-box;
-}
-
-.plan-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-  background: rgba(245, 245, 220, 0.2);
-}
-
-/* Etiqueta "MÁS POPULAR" */
-.plan-card.popular::before {
-  content: "MÁS POPULAR";
-  position: absolute;
-  top: 15px;
-  right: -30px;
-  background: var(--cafe-medio);
-  color: var(--hueso);
-  padding: 5px 30px;
-  font-size: 0.8rem;
-  font-weight: bold;
-  transform: rotate(45deg);
-  border: 1px solid var(--caqui-claro);
-}
-
-/* Icono del plan */
-.plan-icon {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  color: var(--caqui-claro);
-}
-
-/* Nombre del plan */
-.plan-name {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-  color: var(--hueso);
-}
-
-/* Precio del plan */
-.plan-price {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: var(--caqui-claro);
-}
-
-.plan-price span {
-  font-size: 1rem;
-  color: var(--hueso);
-}
-
-/* Lista de características */
-.plan-features {
-  list-style: none;
-  margin-bottom: 30px;
-  text-align: left;
-  padding: 0;
-}
-
-.plan-features li {
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(215, 204, 200, 0.2);
-  color: var(--hueso);
-}
-
-.plan-features li:last-child {
-  border-bottom: none;
-}
-
-.plan-features i {
-  color: var(--caqui-claro);
-  margin-right: 10px;
-}
-
-/* Botón de compra */
-.btn-buy {
-  display: inline-block;
-  background: var(--cafe-medio);
-  color: var(--hueso);
-  padding: 12px 30px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  width: 100%;
-  border: 1px solid var(--caqui-claro);
-}
-
-.btn-buy:hover {
-  background: var(--caqui-claro);
-  color: var(--cafe-oscuro);
-  transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(215, 204, 200, 0.4);
-}
-
-/* Responsive para móviles */
-@media (max-width: 480px) {
-  .plans-container {
-    flex-direction: column;
-    align-items: center;
-    padding: 0 15px;
-  }
-
-  .plan-card {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .content-section {
-    padding: 20px 15px;
-  }
-}
-
-/* General para evitar scroll horizontal */
-body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-
-    
-    .savings-badge {
-      background: var(--cafe-medio);
-      color: var(--hueso);
-      padding: 5px 10px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      margin-top: 10px;
-      display: inline-block;
-      border: 1px solid var(--caqui-claro);
-    }
-    
-    footer {
-      background: var(--cafe-oscuro);
-      padding: 20px;
-      text-align: center;
-      margin-top: auto;
-      border-top: 2px solid var(--cafe-medio);
-    }
-    
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .social-links a {
-      color: var(--caqui-claro);
-      font-size: 1.5rem;
-      margin-left: 15px;
-      transition: all 0.3s ease;
-    }
-    
-    .social-links a:hover {
-      color: var(--hueso);
-      transform: translateY(-3px);
-    }
-    
-    /* Animación de partículas */
+    /* Fondo de partículas (Minimalista) */
     #particles-container {
       position: fixed;
       top: 0;
@@ -338,50 +52,332 @@ body {
       width: 100%;
       height: 100%;
       z-index: -1;
-      pointer-events: none;
+      opacity: 0.4;
     }
-    
     .particle {
       position: absolute;
-      background: rgba(215, 204, 200, 0.5);
+      background: var(--accent-primary);
+      opacity: 0.1;
       border-radius: 50%;
-      animation: float 15s infinite linear;
+      pointer-events: none;
     }
-    
-    @keyframes float {
-      0% {
-        transform: translateY(0) translateX(0);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) translateX(100px);
-        opacity: 0;
-      }
+
+    /* Contenedor Principal */
+    .container {
+      display: flex;
+      max-width: 1400px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      gap: 2rem;
     }
-    
+
+    /* Sidebar Minimalista */
+    aside {
+      flex: 0 0 280px;
+      position: sticky;
+      top: 2rem;
+      height: fit-content;
+    }
+
+    .sidebar-section {
+      background: var(--bg-secondary);
+      border-radius: 24px;
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--card-shadow);
+      border: 1px solid var(--border-light);
+      backdrop-filter: blur(4px);
+      transition: var(--transition-smooth);
+    }
+
+    .sidebar-section:hover {
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+      border-color: var(--accent-primary);
+    }
+
+    .sidebar-section h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.25rem;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .sidebar-links {
+      list-style: none;
+    }
+
+    .sidebar-links li {
+      margin-bottom: 0.5rem;
+    }
+
+    .sidebar-links a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.75rem 1rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-radius: 14px;
+      font-weight: 500;
+      transition: var(--transition-smooth);
+      border: 1px solid transparent;
+    }
+
+    .sidebar-links a i {
+      width: 20px;
+      color: var(--accent-primary);
+    }
+
+    .sidebar-links a:hover, .sidebar-links a.active {
+      background: #f0f9ff;
+      color: var(--accent-primary);
+      border-color: #bae6fd;
+      transform: translateX(4px);
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--text-primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: var(--transition-smooth);
+      text-align: center;
+      border: 1px solid transparent;
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+
+    .button i {
+      margin-right: 8px;
+    }
+
+    .button:hover {
+      background: var(--accent-primary);
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
+    }
+
+    /* Contenido Principal */
+    .main-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .content-section {
+      background: var(--bg-secondary);
+      border-radius: 32px;
+      padding: 2.5rem;
+      box-shadow: var(--card-shadow);
+      border: 1px solid var(--border-light);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin: 2rem 0 1rem;
+      color: var(--text-primary);
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 1.5rem 0 1rem;
+    }
+
+    /* SCRS Carusel (Carrusel Minimalista) */
+    .carousel-container {
+      margin: 2.5rem 0;
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      background: #f1f5f9;
+      padding: 1.5rem;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-card {
+      flex: 0 0 100%;
+      padding: 0.5rem;
+    }
+
+    .card-inner {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: var(--card-shadow);
+      border-left: 6px solid var(--accent-secondary);
+    }
+
+    .carousel-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 20px;
+      background: #cbd5e1;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .carousel-dot.active {
+      width: 24px;
+      background: var(--accent-primary);
+    }
+
+    /* Tienda (Planes) */
+    .plans-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .plan-card {
+      background: white;
+      border-radius: 24px;
+      padding: 2rem 1.5rem;
+      box-shadow: var(--card-shadow);
+      border: 1px solid var(--border-light);
+      text-align: center;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .plan-card.popular {
+      border-color: var(--accent-primary);
+      box-shadow: 0 20px 25px -5px rgba(14, 165, 233, 0.1);
+    }
+
+    .plan-icon {
+      font-size: 2rem;
+      color: var(--accent-primary);
+      margin-bottom: 1rem;
+    }
+
+    .plan-price {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .plan-price span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-secondary);
+    }
+
+    .savings-badge {
+      background: var(--accent-secondary);
+      color: white;
+      padding: 0.25rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      display: inline-block;
+      margin: 0.5rem 0;
+    }
+
+    .plan-features {
+      list-style: none;
+      text-align: left;
+      margin: 1.5rem 0;
+    }
+
+    .plan-features li {
+      padding: 0.5rem 0;
+      border-bottom: 1px dashed var(--border-light);
+      color: var(--text-secondary);
+    }
+
+    .plan-features i {
+      color: var(--accent-secondary);
+      margin-right: 8px;
+    }
+
+    .btn-buy {
+      background: transparent;
+      border: 1.5px solid var(--text-primary);
+      color: var(--text-primary);
+      padding: 0.8rem;
+      width: 100%;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-buy:hover {
+      background: var(--text-primary);
+      color: white;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border-light);
+      margin-top: 3rem;
+    }
+
     /* Responsive */
-    @media (max-width: 992px) {
+    @media (max-width: 900px) {
       .container {
         flex-direction: column;
       }
-      
       aside {
+        position: static;
         width: 100%;
-        height: auto;
-        position: relative;
       }
-      
-      .plans-container {
-        flex-direction: column;
-        align-items: center;
+      h1 {
+        font-size: 2.5rem;
       }
-    } 
+    }
+
+    /* Listas y estilos de texto para el documento de investigación */
+    .legal-badge {
+      background: #f1f5f9;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.8rem; 
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+    .highlight {
+      color: var(--accent-primary);
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
@@ -389,110 +385,129 @@ body {
   
   <div class="container">
     <aside>
-      <div class="sidebar-section">
-             <h3>Blog Numerosintmx</h3>
-        <h3>Enlaces Rápidos</h3>
+      <div class="sidebar-section scrms-hidden">
+        <h3><i class="fas fa-bolt" style="color: var(--accent-primary);"></i> Blog Numerosintmx</h3>
         <ul class="sidebar-links">
           <li><a href="#" class="active" data-section="inicio"><i class="fas fa-home"></i> Inicio</a></li>
           <li><a href="#" data-section="tienda"><i class="fas fa-store"></i> Tienda</a></li>
+          <li><a href="#" data-section="analisis"><i class="fas fa-microchip"></i> Análisis Técnico</a></li>
           <li><a href="#" data-section="faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
           <li><a href="mailto:bszosint@gmail.com"><i class="fas fa-envelope"></i> Contacto</a></li>
         </ul>
       </div>
       
-    
-      <div class="sidebar-section">
-        <h3>Tienda</h3>
-        <p>Podrás comprar saldo por meses y limitdo.</p>
+      <div class="sidebar-section scrms-hidden">
+        <h3><i class="fas fa-shield-alt"></i> Ética y Legalidad</h3>
+        <p style="font-size:0.9rem;">Esta herramienta está diseñada para fines educativos y de investigación en OSINT. Consulta nuestro análisis sobre la <span class="highlight">Ley Olimpia</span> y protección de datos.</p>
+        <a href="#" data-section="analisis" class="button" style="background: var(--accent-secondary);">Ver Análisis <i class="fas fa-arrow-right"></i></a>
       </div>
       
-        <div class="sidebar-section">
-         <h3>Herramienta</h3>
-       <a href="https://numerosintmx.foroactivo.com/h1-osint" class="button"> Ver Herramienta</a>
+      <div class="sidebar-section scrms-hidden">
+        <h3><i class="fas fa-download"></i> App Móvil</h3>
+        <p>Descarga nuestra APK para Android con funcionalidades mejoradas de validación.</p>
+        <a href="https://numerosintmx.foroactivo.com/h3-descargar" class="button"><i class="fas fa-download"></i> Descargar Apk</a>
       </div>
       
-      <div class="sidebar-section">
-        <h3>Soporte</h3>
-        <p>¿Necesitas ayuda? Contáctanos a través de nuestro formulario de soporte.</p>
-        <a href="mailto:bszosint@gmail.com" class="button"><i class="fas fa-headset"></i> Soporte</a>
+      <div class="sidebar-section scrms-hidden">
+        <h3><i class="fas fa-headset"></i> Soporte</h3>
+        <p>¿Problemas con la suscripción o dudas técnicas?</p>
+        <a href="mailto:bszosint@gmail.com" class="button"><i class="fas fa-headset"></i> Contactar Soporte</a>
       </div>
-      
-         <div class="sidebar-section">
-         <h3>Apk</h3>
-           <p>¿Necesitas ayuda? Esta web podras descargar nuestra app.</p>
-       <a href="https://numerosintmx.foroactivo.com/h3-descargar" class="button"><i class="fas fa-download"></i> Descargar Apk</a>
-      </div>
-      
     </aside>
     
     <div class="main-content">
+      <!-- SECCIÓN INICIO -->
       <div id="inicio-content" class="content-section">
-        <h1>Numerosintmx</h1>
-        <p>Tu plataforma de análisis de números telefónicos con inteligencia avanzada.</p>
-        <p>Explora nuestras funciones y descubre información valiosa sobre números de teléfono.</p>
-         <h2>Obtén tu Suscripción</h2>
-        <p>Accede a todas las funciones premium de nuestra plataforma.</p>
+        <div class="scrms-hidden">
+          <h1>Numerosintmx</h1>
+          <p style="font-size:1.2rem; color: var(--text-secondary);">Plataforma de análisis telefónico con inteligencia OSINT y validación ética.</p>
+        </div>
 
-   <h2>¿Cómo funciona?</h2>
-        <ol>
-            <li>El usuario ingresa un número telefónico (incluyendo el código del país).</li>
+        <!-- SCRS Carusel (Implementación del Carrusel Invisible) -->
+        <div class="carousel-container scrms-hidden">
+          <div class="carousel-track" id="carouselTrack">
+            <div class="carousel-card">
+              <div class="card-inner">
+                <i class="fas fa-gavel" style="font-size: 2rem; color: var(--accent-secondary); margin-bottom: 1rem;"></i>
+                <h3>Ley Olimpia y Violencia Digital</h3>
+                <p>El uso de <strong>numerosintmx</strong> para localizar o acosar a una persona (especialmente mujeres) podría configurar violencia digital. Sanciones de 3 a 6 años de prisión (Art. 199 Quáter).</p>
+                <span class="legal-badge">Artículo 199 Quáter - Código Penal Federal</span>
+              </div>
+            </div>
+            <div class="carousel-card">
+              <div class="card-inner">
+                <i class="fas fa-map-pin" style="font-size: 2rem; color: var(--accent-primary); margin-bottom: 1rem;"></i>
+                <h3>Precisión y Geoposicionamiento</h3>
+                <p>La ubicación se deriva de OpenStreetMap y TimeZoneDB. La precisión es a nivel <strong>ciudad o región</strong>, no exacta. Depende de las actualizaciones de Google Maps y calles nuevas.</p>
+              </div>
+            </div>
+            <div class="carousel-card">
+              <div class="card-inner">
+                <i class="fas fa-database" style="font-size: 2rem; color: var(--accent-secondary); margin-bottom: 1rem;"></i>
+                <h3>Almacenamiento y Privacidad</h3>
+                <p>El script no almacena datos persistentemente en el frontend, pero las APIs externas (TimeZoneDB, OpenStreetMap) podrían registrar las consultas. Recomendamos uso ético.</p>
+              </div>
+            </div>
+            <div class="carousel-card">
+              <div class="card-inner">
+                <i class="fas fa-balance-scale" style="font-size: 2rem; color: var(--accent-primary); margin-bottom: 1rem;"></i>
+                <h3>Mejoras Éticas Propuestas</h3>
+                <p>Implementación de anonimización de consultas, limitación de tasa de peticiones, y advertencias claras sobre el uso del número para prevenir fraudes o acoso.</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-nav">
+            <button class="carousel-dot active" data-index="0"></button>
+            <button class="carousel-dot" data-index="1"></button>
+            <button class="carousel-dot" data-index="2"></button>
+            <button class="carousel-dot" data-index="3"></button>
+          </div>
+        </div>
+
+        <div class="scrms-hidden">
+          <h2>¿Cómo funciona?</h2>
+          <ol style="padding-left: 1.5rem; color: var(--text-secondary);">
+            <li>El usuario ingresa un número telefónico (incluyendo código de país).</li>
             <li>Se realiza una solicitud a la API para validar y obtener datos del número.</li>
-            <li>Si no se obtiene información como timezone, código de región o código postal:
-                <ul>
-                    <li>Se consulta a OpenStreetMap (Nominatim) para geolocalizar la ciudad basada en el nombre de la ubicación y país.</li>
-                    <li>Luego se consulta a TimeZoneDB con las coordenadas obtenidas para obtener la zona horaria.</li>
-                </ul>
-            </li>
-            <li>Se muestra en pantalla toda la información disponible.</li>
-        </ol>
-<br>
- <h2>Tecnologías utilizadas</h2>
-        <ul>
-            <li>JavaScript (puro, sin frameworks)</li>
-            <li>XMLHttpRequest para llamadas AJAX</li>
-            <li>OpenStreetMap Nominatim API – para geocodificación</li>
-            <li>TimeZoneDB API – para obtener la zona horaria desde coordenadas geográficas</li>
-        </ul>
-<br>
- <h2>¿Para qué sirve?</h2>
-        <p>Verificar la validez y detalles técnicos de un número telefónico.</p>
-        <p>Obtener ubicación geográfica detallada y timezone incluso si la API principal no la proporciona.</p>
-        
-        <h3>Es útil para aplicaciones de:</h3>
-        <ul>
-            <li>Registro de usuarios con validación telefónica</li>
-            <li>Sistemas de CRM y soporte técnico</li>
-            <li>Monitoreo y análisis geográfico de usuarios</li>
-        </ul>
-        
+            <li>Si no se obtiene timezone o ubicación, se consulta a <strong>OpenStreetMap (Nominatim)</strong> para geolocalizar la ciudad.</li>
+            <li>Luego se consulta a <strong>TimeZoneDB</strong> con las coordenadas para obtener la zona horaria.</li>
+            <li>Se muestra en pantalla la información disponible (País, Operador, Tipo de línea).</li>
+          </ol>
+        </div>
+
+        <div class="scrms-hidden">
+          <h2>Tecnologías utilizadas</h2>
+          <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; list-style: none;">
+            <li><i class="fab fa-js" style="color: #f7df1e;"></i> JavaScript (Puro)</li>
+            <li><i class="fas fa-code"></i> XMLHttpRequest (AJAX)</li>
+            <li><i class="fas fa-map"></i> OpenStreetMap Nominatim</li>
+            <li><i class="fas fa-clock"></i> TimeZoneDB API</li>
+          </ul>
+        </div>
       </div>
       
+      <!-- SECCIÓN TIENDA -->
       <div id="tienda-content" class="content-section" style="display: none;">
-        <h2>Tienda</h2>
-        <p class="store-description">Selecciona el plan que mejor se adapte a tus necesidades. Todos los planes incluyen acceso completo a nuestras funciones de análisis.</p>
+        <h2 class="scrms-hidden">Tienda de Suscripciones</h2>
+        <p class="store-description scrms-hidden">Selecciona el plan que mejor se adapte a tus necesidades. Todos los planes incluyen acceso completo a nuestras funciones de análisis.</p>
         
         <div class="plans-container">
           <!-- Plan 1 Mes -->
-          <div class="plan-card">
-            <div class="plan-icon">
-              <i class="fas fa-calendar-alt"></i>
-            </div>
+          <div class="plan-card scrms-hidden">
+            <div class="plan-icon"><i class="fas fa-calendar-alt"></i></div>
             <h3 class="plan-name">Plan Básico</h3>
             <div class="plan-price">$150 <span>/mes</span></div>
             <ul class="plan-features">
               <li><i class="fas fa-check"></i> Acceso por 1 mes</li>
               <li><i class="fas fa-check"></i> 100 consultas mensuales</li>
               <li><i class="fas fa-check"></i> Soporte por correo</li>
-              <li><i class="fas fa-check"></i> Actualizaciones incluidas</li>
             </ul>
-            <button class="btn-buy" href="mailto:bszosint@gmail.com?subject=Comprar%20mes%20OSITN%20n%C3%BAmero&body=Hola,%0A%0A[Escribe%20el%20n%C3%BAmero%20del%20mes]%0A[Escribe%20tu%20nombre%20registrado]%0A%0AGracias.">Comprar Ahora</button>
+            <button class="btn-buy" onclick="window.location.href='mailto:bszosint@gmail.com?subject=Comprar%20mes%20OSITN'">Comprar Ahora</button>
           </div>
           
           <!-- Plan 4 Meses -->
-          <div class="plan-card popular">
-            <div class="plan-icon">
-              <i class="fas fa-star"></i>
-            </div>
+          <div class="plan-card popular scrms-hidden">
+            <div class="plan-icon"><i class="fas fa-star"></i></div>
             <h3 class="plan-name">Plan Estándar</h3>
             <div class="plan-price">$400 <span>/4 meses</span></div>
             <div class="savings-badge">Ahorras $200</div>
@@ -500,157 +515,246 @@ body {
               <li><i class="fas fa-check"></i> Acceso por 4 meses</li>
               <li><i class="fas fa-check"></i> 500 consultas mensuales</li>
               <li><i class="fas fa-check"></i> Soporte prioritario</li>
-              <li><i class="fas fa-check"></i> Actualizaciones incluidas</li>
-              <li><i class="fas fa-check"></i> Estadísticas avanzadas</li>
             </ul>
-            <button class="btn-buy" href="mailto:bszosint@gmail.com?subject=Comprar%20mes%20OSITN%20n%C3%BAmero&body=Hola,%0A%0A[Escribe%20el%20n%C3%BAmero%20del%20mes]%0A[Escribe%20tu%20nombre%20registrado]%0A%0AGracias.">Comprar Ahora</button>
+            <button class="btn-buy" onclick="window.location.href='mailto:bszosint@gmail.com?subject=Comprar%204%20meses%20OSITN'">Comprar Ahora</button>
           </div>
           
           <!-- Plan 1 Año -->
-          <div class="plan-card">
-            <div class="plan-icon">
-              <i class="fas fa-crown"></i>
-            </div>
+          <div class="plan-card scrms-hidden">
+            <div class="plan-icon"><i class="fas fa-crown"></i></div>
             <h3 class="plan-name">Plan Premium</h3>
             <div class="plan-price">$900 <span>/año</span></div>
             <div class="savings-badge">Ahorras $900</div>
             <ul class="plan-features">
               <li><i class="fas fa-check"></i> Acceso por 1 año completo</li>
               <li><i class="fas fa-check"></i> Consultas ilimitadas</li>
-              <li><i class="fas fa-check"></i> Soporte premium 24/7</li>
-              <li><i class="fas fa-check"></i> Actualizaciones prioritarias</li>
               <li><i class="fas fa-check"></i> Reportes personalizados</li>
-              <li><i class="fas fa-check"></i> Acceso a funciones beta</li>
             </ul>
-            <button class="btn-buy" href="mailto:bszosint@gmail.com?subject=Comprar%20mes%20OSITN%20n%C3%BAmero&body=Hola,%0A%0A[Escribe%20el%20n%C3%BAmero%20del%20mes]%0A[Escribe%20tu%20nombre%20registrado]%0A%0AGracias.">>Comprar Ahora</button>
+            <button class="btn-buy" onclick="window.location.href='mailto:bszosint@gmail.com?subject=Comprar%20Anio%20OSITN'">Comprar Ahora</button>
           </div>
-        </div>
-        
-        <div class="store-description" style="margin-top: 40px;">
-          <p><i class="fas fa-shield-alt"></i> Todos los pagos son seguros y están protegidos.</p>
-          <p><i class="fas fa-sync-alt"></i> Puedes cancelar tu suscripción en cualquier momento.</p>
         </div>
       </div>
       
-      <div id="faq-content" class="content-section" style="display: none;">
-        <h2>Preguntas Frecuentes</h2>
-         <h2> ¿Cómo se usa?</h2>
-          <ul>
-            <li>Ingresa un número telefónico en el campo indicado.</li>
-            <li>Haz clic en "Filtrar Datos".</li>
-            <li>Observa el resultado en pantalla.</li>
-            <li>Usa el botón "Copiar" para guardar la información.</li>
-          </ul>
-          <p>El proceso es simple e intuitivo, diseñado para usuarios de todos los niveles de experiencia técnica.</p>
-        <br>
-        <h2> Política de Privacidad</h2>
-          <p>Esta herramienta almacena temporalmente datos como nombre de usuario e IP para fines de validación. No compartimos esta información con terceros. El usuario puede cerrar sesión en cualquier momento para eliminar sus datos de sesión.</p>
-          <p>Nos tomamos muy en serio la seguridad de tus datos. Todos los procesos de validación se realizan en servidores seguros con encriptación de extremo a extremo.</p>
-        <br>
-        <h2> ¿Qué es esta herramienta?</h2>
-          <p>NumExtracBsz es una herramienta web diseñada para validar y filtrar datos asociados a números telefónicos. Permite analizar información útil de forma rápida y segura.</p>
-          <p>Con nuestra plataforma, puedes obtener información relevante sobre números telefónicos de manera eficiente, manteniendo siempre la seguridad y privacidad de los datos.</p>
+      <!-- NUEVA SECCIÓN: ANÁLISIS TÉCNICO Y LEGAL (Documento de Investigación) -->
+      <div id="analisis-content" class="content-section" style="display: none;">
+        <h2 class="scrms-hidden">Análisis Técnico y Legal</h2>
+        <div class="scrms-hidden">
+          <h3>Objetivo General</h3>
+          <p>Analizar el funcionamiento, precisión y riesgos de la herramienta <strong>numerosintmx</strong> como validador telefónico con capacidades de geolocalización.</p>
+        </div>
         
+        <div class="scrms-hidden">
+          <h3>Leyes Aplicables al Anonimato y Acoso Telefónico</h3>
+          <div style="background: #f8fafc; padding: 1.5rem; border-radius: 20px; margin: 1rem 0;">
+            <h4 style="margin-top:0;"><i class="fas fa-balance-scale"></i> Ley Olimpia</h4>
+            <p><strong>Fundamento:</strong> Reformas a la Ley General de Acceso de las Mujeres a una Vida Libre de Violencia y al Código Penal Federal (artículos 199 Quáter, 199 Quinquies).</p>
+            <p><strong>Relevancia para numerosintmx:</strong> Si la información de ubicación u operador se usa para localizar o acosar a una persona, podría configurar violencia digital. Sanciones de 3 a 6 años de prisión.</p>
+          </div>
+        </div>
+
+        <div class="scrms-hidden">
+          <h3>Hipótesis de la Investigación</h3>
+          <ul style="list-style: disc; padding-left: 1.5rem;">
+            <li>La precisión de la ubicación será baja (nivel ciudad o región) y dependerá de la calidad de los datos registrados por Google Maps/OpenStreetMap.</li>
+            <li>El script no almacena datos persistentemente, pero las APIs externas sí podrían registrar las consultas.</li>
+            <li>El uso sin consentimiento del titular podría violar normativas de protección de datos en México.</li>
+          </ul>
+        </div>
+
+        <div class="scrms-hidden">
+          <h3>Consideraciones Éticas y Mejoras Propuestas</h3>
+          <p>Se propone la implementación de:</p>
+          <ul style="list-style: circle; padding-left: 1.5rem;">
+            <li><strong>Anonimización</strong> de consultas en logs.</li>
+            <li><strong>Limitación de consultas</strong> por IP para prevenir scraping masivo.</li>
+            <li><strong>Advertencias explícitas</strong> al usuario sobre el uso ético y legal de los datos.</li>
+          </ul>
+          <p style="margin-top: 1rem;"><i class="fas fa-check-circle" style="color: var(--accent-secondary);"></i> Se respetan los términos de uso de OpenStreetMap (atribución obligatoria) y TimeZoneDB.</p>
+        </div>
+      </div>
+      
+      <!-- SECCIÓN FAQ -->
+      <div id="faq-content" class="content-section" style="display: none;">
+        <h2 class="scrms-hidden">Preguntas Frecuentes</h2>
+        <div class="scrms-hidden">
+          <h3>¿Cómo se usa?</h3>
+          <p>Ingresa un número telefónico en el campo indicado en la herramienta principal, haz clic en "Filtrar Datos" y observa el resultado.</p>
+        </div>
+        <div class="scrms-hidden">
+          <h3>Política de Privacidad</h3>
+          <p>Esta herramienta almacena temporalmente datos como nombre de usuario e IP para fines de validación. No compartimos esta información con terceros. Nos tomamos muy en serio la seguridad de tus datos con encriptación de extremo a extremo.</p>
+        </div>
+        <div class="scrms-hidden">
+          <h3>¿Qué es esta herramienta?</h3>
+          <p>NumExtracBsz / Numerosintmx es una herramienta web diseñada para validar y filtrar datos asociados a números telefónicos de forma rápida y segura, ideal para CRM, soporte técnico y monitoreo.</p>
+        </div>
       </div>
     </div>
   </div>
   
   <footer>
     <div class="footer-content">
-      <p>&copy; 2025 Numerosintmx.</p>
-   
+      <p>&copy; 2026 Numerosintmx. Análisis ético y legal en cumplimiento con la normatividad mexicana.</p>
     </div>
   </footer>
   
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Elementos del DOM
-      const inicioLink = document.querySelector('a[data-section="inicio"]');
-      const tiendaLink = document.querySelector('a[data-section="tienda"]');
-      const faqLink = document.querySelector('a[data-section="faq"]');
-      const inicioContent = document.getElementById('inicio-content');
-      const tiendaContent = document.getElementById('tienda-content');
-      const faqContent = document.getElementById('faq-content');
-      const sidebarLinks = document.querySelectorAll('.sidebar-links a');
-      const buyButtons = document.querySelectorAll('.btn-buy');
+    (function() {
+      // 1. CONFIGURACIÓN DE SECCIONES Y NAVEGACIÓN
+      const sections = {
+        inicio: document.getElementById('inicio-content'),
+        tienda: document.getElementById('tienda-content'),
+        analisis: document.getElementById('analisis-content'),
+        faq: document.getElementById('faq-content')
+      };
       
-      // Función para cambiar entre secciones
-      function showSection(section) {
-        // Ocultar todo el contenido
-        inicioContent.style.display = 'none';
-        tiendaContent.style.display = 'none';
-        faqContent.style.display = 'none';
+      const links = document.querySelectorAll('.sidebar-links a[data-section]');
+      const allSections = Object.values(sections);
+      
+      function showSection(sectionId) {
+        allSections.forEach(s => s.style.display = 'none');
+        if (sections[sectionId]) sections[sectionId].style.display = 'block';
         
-        // Mostrar la sección seleccionada
-        if (section === 'inicio') {
-          inicioContent.style.display = 'block';
-        } else if (section === 'tienda') {
-          tiendaContent.style.display = 'block';
-        } else if (section === 'faq') {
-          faqContent.style.display = 'block';
+        links.forEach(link => {
+          const isActive = link.dataset.section === sectionId;
+          link.classList.toggle('active', isActive);
+        });
+        
+        // Disparar animaciones SCRMS al cambiar de sección
+        setTimeout(initScrollReveal, 50);
+      }
+      
+      links.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const section = link.dataset.section;
+          if (section) showSection(section);
+        });
+      });
+      
+      // 2. SCRMS - SISTEMA DE REVELADO POR SCROLL (Invisible)
+      function initScrollReveal() {
+        const hiddenElements = document.querySelectorAll('.scrms-hidden:not(.scrms-show)');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('scrms-show');
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -10px 0px' });
+        
+        hiddenElements.forEach(el => observer.observe(el));
+      }
+      
+      // 3. SCRS CARUSEL (Lógica del Carrusel)
+      const track = document.getElementById('carouselTrack');
+      const dots = document.querySelectorAll('.carousel-dot');
+      let currentIndex = 0;
+      
+      function updateCarousel(index) {
+        if (!track) return;
+        const cardWidth = track.clientWidth;
+        track.style.transform = `translateX(-${index * cardWidth}px)`;
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === index);
+        });
+        currentIndex = index;
+      }
+      
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => updateCarousel(i));
+      });
+      
+      // Auto-play carrusel (opcional, cada 6 segundos)
+      let carouselInterval = setInterval(() => {
+        if (track) {
+          const totalSlides = dots.length;
+          const nextIndex = (currentIndex + 1) % totalSlides;
+          updateCarousel(nextIndex);
         }
-        
-        // Actualizar clases activas
-        sidebarLinks.forEach(link => {
-          if (link.getAttribute('data-section') === section) {
-            link.classList.add('active');
-          } else {
-            link.classList.remove('active');
-          }
+      }, 6000);
+      
+      // Pausar auto-play al interactuar
+      const carouselContainer = document.querySelector('.carousel-container');
+      if (carouselContainer) {
+        carouselContainer.addEventListener('mouseenter', () => clearInterval(carouselInterval));
+        carouselContainer.addEventListener('mouseleave', () => {
+          carouselInterval = setInterval(() => {
+            const totalSlides = dots.length;
+            const nextIndex = (currentIndex + 1) % totalSlides;
+            updateCarousel(nextIndex);
+          }, 6000);
         });
       }
       
-      // Event listeners para los enlaces
-      inicioLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        showSection('inicio');
-      });
-      
-      tiendaLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        showSection('tienda');
-      });
-      
-      faqLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        showSection('faq');
-      });
-      
-      // Event listeners para botones de compra
-      buyButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          const planName = this.closest('.plan-card').querySelector('.plan-name').textContent;
-          alert(`¡Gracias por tu interés en el ${planName}! Serás redirigido al proceso de pago.`);
-          // Aquí iría la lógica real de redirección al proceso de pago
-        });
-      });
-      
-      // Inicializar con la sección de inicio visible
-      showSection('inicio');
-      
-      // Crear partículas para el fondo
+      // 4. PARTÍCULAS DE FONDO
       const particlesContainer = document.getElementById('particles-container');
-      const particleCount = 30;
-      
-      for (let i = 0; i < particleCount; i++) {
+      for (let i = 0; i < 25; i++) {
         const particle = document.createElement('div');
         particle.classList.add('particle');
-        
-        // Tamaño aleatorio
-        const size = Math.random() * 10 + 5;
+        const size = Math.random() * 8 + 4;
         particle.style.width = `${size}px`;
         particle.style.height = `${size}px`;
-        
-        // Posición aleatoria
         particle.style.left = `${Math.random() * 100}%`;
         particle.style.top = `${Math.random() * 100}%`;
-        
-        // Retraso de animación aleatorio
-        particle.style.animationDelay = `${Math.random() * 15}s`;
-        
+        particle.style.animation = `float ${Math.random() * 10 + 15}s infinite ease-in-out`;
+        particle.style.animationDelay = `${Math.random() * 5}s`;
         particlesContainer.appendChild(particle);
       }
-    });
+      
+      // Agregar keyframes de flotación si no existen
+      if (!document.querySelector('#particle-keyframes')) {
+        const style = document.createElement('style');
+        style.id = 'particle-keyframes';
+        style.innerHTML = `
+          @keyframes float {
+            0% { transform: translateY(0px) translateX(0px); opacity: 0; }
+            10% { opacity: 0.2; }
+            90% { opacity: 0.2; }
+            100% { transform: translateY(-100px) translateX(20px); opacity: 0; }
+          }
+        `;
+        document.head.appendChild(style);
+      }
+      
+      // 5. INICIALIZACIÓN
+      showSection('inicio');
+      window.addEventListener('load', () => {
+        initScrollReveal();
+        // Ajustar carrusel al cargar
+        if (track) setTimeout(() => updateCarousel(0), 100);
+      });
+      
+      window.addEventListener('resize', () => {
+        if (track) updateCarousel(currentIndex);
+      });
+      
+      // Hacer que los botones de compra funcionen con el mailto del código original
+      document.querySelectorAll('.btn-buy').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          // Ya tienen onclick inline, pero evitamos conflictos
+        });
+      });
+    })();
   </script>
+  
+  <!-- Pequeño ajuste de estilo para animaciones -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .sidebar-links a.active {
+      background: #f0f9ff;
+      color: var(--accent-primary);
+      border-color: #bae6fd;
+    }
+    .carousel-card .card-inner {
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  </style>
 </body>
 </html>
