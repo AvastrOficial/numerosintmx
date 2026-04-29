@@ -2443,8 +2443,6 @@ const CODIGOS_POSTALES_MEXICO = {
     "45297": ["Rinconada de San Pedro"],
     "45298": ["San Pedro Tuzanía"],
     "45299": ["Cumbres de San Pedro"],
-    
-    # ========== NUEVOS FRACCIONAMIENTOS (NORTE Y PONIENTE) ==========
     "45300": ["Lomas del Valle II", "Valle II"],
     "45301": ["Lomas del Valle III", "Valle III"],
     "45302": ["Lomas del Country III", "Country III"],
